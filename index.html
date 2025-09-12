@@ -340,7 +340,11 @@
         }
 
         header {
-          display: none;
+          display: none !important;
+          /* !important is needed because vite breaks expectations */
+          /* themeing.css is imported BEFORE the inline style in index.html */
+          /* but it's bundled version is appended at the end of the head */
+          /* making the header{ display: flex } come after this */
         }
 
         #mobile-menu-content > header {
